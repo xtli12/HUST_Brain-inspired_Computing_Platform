@@ -243,14 +243,14 @@ class tra(nn.Module):
         normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         if is_train:
             dataset = torchvision.datasets.ImageFolder(dir, transforms.Compose([
-                transforms.Resize(32), transforms.CenterCrop(32),  # 随机形变压缩裁剪至224*224
-                # transforms.Resize(256), transforms.CenterCrop(256),  # 随机形变压缩裁剪至224*224
+                transforms.Resize(32), transforms.CenterCrop(32),  # 随机形变压缩裁剪至32*32
+                # transforms.Resize(256), transforms.CenterCrop(256),  # 随机形变压缩裁剪至256*256
                 transforms.ToTensor(), normalize]))
             sampler = torch.utils.data.RandomSampler(dataset)
         else:
             dataset = torchvision.datasets.ImageFolder(dir, transforms.Compose([
-                transforms.Resize(32), transforms.CenterCrop(32),  # 压缩至256*256 中心裁剪224*224大小的验证图像
-                # transforms.Resize(256), transforms.CenterCrop(256),  # 随机形变压缩裁剪至224*224
+                transforms.Resize(32), transforms.CenterCrop(32),  # 随机形变压缩裁剪至32*32
+                # transforms.Resize(256), transforms.CenterCrop(256),  # 随机形变压缩裁剪至256*256
                 transforms.ToTensor(), normalize]))
 
             sampler = torch.utils.data.SequentialSampler(dataset)
